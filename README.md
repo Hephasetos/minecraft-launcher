@@ -1,39 +1,37 @@
-# My Minecraft Launcher
+# BioField Launcher
 
-An independent Minecraft: Java Edition desktop launcher under development using Electron and TypeScript.
+BioField Launcher, registered in Azure as “My Minecraft Launcher,” is a Windows desktop launcher under development for approximately 20 friends.
 
-## Current development status
+Its purpose is to simplify installing the required mods and joining our Minecraft Java Edition server. The server is planned to run on the developer’s personal computer. There are no plans to offer paid products.
 
-The local Windows prototype currently supports:
+## Implementation
 
-- A basic desktop launcher interface.
-- Microsoft account sign-in through the system browser using authorization code flow with PKCE.
-- Xbox Live and XSTS authentication.
+The current prototype is based on MRS Launcher / Helios Launcher and uses Electron and JavaScript. The local project retains the upstream MIT license and copyright notices.
 
-Minecraft Services authentication currently returns "Invalid app registration". Minecraft profile retrieval and entitlement verification have not yet been validated. API access approval is being requested.
+The launcher uses the developer’s own Microsoft application ID, rather than the upstream developer’s application ID.
 
-This repository currently provides project documentation. The prototype source code has not yet been uploaded, and no downloadable release is available.
+Upstream projects:
+- https://github.com/peunsu/MRSLauncher
+- https://github.com/dscalzi/HeliosLauncher
 
-## Intended Minecraft API usage
+## Intended functionality
 
-The launcher needs Minecraft Services access to authenticate the signed-in user, verify their Java Edition entitlements, and retrieve their Minecraft profile.
+- Install and verify the mods required for our server.
+- Authenticate users with their own Microsoft accounts.
+- Launch Minecraft Java Edition and connect to our server.
 
-Game access is intended for users with a valid Minecraft: Java Edition entitlement.
+Users are intended to have valid access to Minecraft Java Edition. The launcher is not intended to bypass authentication or game ownership requirements.
 
-## Planned features
+## Authentication and development status
 
-- Minecraft version selection and downloads.
-- Vanilla, Fabric, and Forge support.
-- Configurable Java runtime, JVM arguments, and memory allocation.
-- Separate game instances and optional modpack management.
-- Support for additional desktop platforms.
+The current implementation displays Microsoft's sign-in page in an Electron window and uses the OAuth authorization-code flow, followed by Xbox Live, XSTS, and Minecraft authentication.
 
-## Authentication and privacy
+Microsoft and Xbox authentication have completed during testing, but Minecraft token issuance returns “Invalid app registration.”
 
-The current prototype opens Microsoft sign-in in the user's system browser. It does not collect Microsoft account passwords.
+The previous AppID approval request was declined. A request for reconsideration is being prepared. Successful end-to-end Minecraft login, game launch, and server connection have not been validated.
 
-Authentication tokens are handled in the Electron main process and are not sent to the renderer UI. Persistent token storage has not yet been implemented.
+## Repository scope
 
-## Affiliation
+This repository currently contains project documentation. The prototype source code and downloadable builds are not published here.
 
-This is an independent project and is not affiliated with, endorsed by, or an official product of Mojang Studios or Microsoft.
+This is an independent project and is not affiliated with or endorsed by Mojang or Microsoft.
